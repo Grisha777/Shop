@@ -1,0 +1,84 @@
+.header-container {
+    background: #FFD700;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    width: 1600px;
+    height: 70px;
+    color: #fff;
+}
+
+.left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+    margin: 0;
+}
+
+.logo,
+.burgerMenu {
+    width: 50px;
+    align-items: center;
+}
+
+.right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 600px;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    width: 350px;
+    height: 40px;
+    padding: 0 10px;
+    background: #fff;
+    border-radius: 35px;
+}
+
+.search img {
+    width: 14px;
+    height: 14px;
+}
+
+.search input {
+    width: 300px;
+    height: 35px;
+    padding-left: 10px;
+    margin-left: 10px;
+    border: none;
+    outline: none;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 200px;
+}
+
+.sign-in-btn {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: 80px;
+    height: 50px;
+    border: 1px solid #000;
+    background: #fff;
+}
+
+.sign-in-btn img {
+    width: 25px;
+}
+
+.sign-in-btn p {
+    font-size: 14px;
+}

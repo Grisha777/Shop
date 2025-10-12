@@ -1,0 +1,17 @@
+.navbar {
+    position: absolute;
+    width: 300px;
+    height: 100vh;
+    padding: 10px;
+    background: orange;
+    border-right: 3px solid red;
+    /* overflow-y: auto; */
+}
+
+.navbar div {
+    padding: 15px;
+}
+
+.navbar div:hover {
+    background: rgb(200, 200, 200, 0.8);
+}
