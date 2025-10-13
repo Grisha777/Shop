@@ -3,9 +3,10 @@ import basket from '../../images/basket.svg';
 
 export const Basket = () =>{
     return (
-        <div>
-            <img src={basket} class='basket-img' alt="Корзина"/>
+        <>
+            <img src={basket} alt="Корзина" 
+            width="24px" height="24px"/>
             {/* количество в корзине */}
-        </div>
+        </>
     )
 }

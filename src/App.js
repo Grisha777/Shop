@@ -1,98 +1,140 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Routes } from "react-router-dom";
 import { Main } from './Main';
-import { FavoritePage } from './FavoritePage'
-import { BasketPage } from './BasketPage'
-
-import photo1 from './images/city-1.jpg';
-import photo2 from './images/marvel-1.jpg';
-import photo3 from './images/space-1.jpg';
-import photo4 from './images/city-2.jpg';
-import photo5 from './images/marvel-2.jpg';
-import photo6 from './images/space-2.jpg';
-import photo7 from './images/city-3.jpg';
-import photo8 from './images/marvel-3.jpg';
-import photo9 from './images/space-3.jpg';
-import photo10 from './images/city-4.jpg';
-
+import { FavoritePage } from './Page/FavoritePage'
+import { BasketPage } from './Page/BasketPage';
+import { CardPage } from './Page/CardPage';
 import './App.css'
 
 function App() {
-
-  const products = [
-    {id: 1, brand: "red", name: "Пожарные", price: 100, category: "Город", rating: 3, img: photo1},
-    {id: 2, brand: "blue", name: "Мстители", price: 200, category: "Марвел", rating: 3, img: photo2},
-    {id: 3, brand: "green", name: "Cynder", price: 300, category: "Звездные войны", rating: 3, img: photo3},
-    {id: 4, brand: "red", name: "Лес", price: 400, category: "Город", rating: 3, img: photo4},
-    {id: 5, brand: "blue", name: "Infinity saga", price: 500, category: "Марвел", rating: 3, img: photo5},
-    {id: 6, brand: "green", name: "AT-AT", price: 600, category: "Звездные войны", rating: 3, img: photo6},
-    {id: 7, brand: "red", name: "Тюрьма", price: 700, category: "Город", rating: 3, img: photo7},
-    {id: 8, brand: "blue", name: "Корабль", price: 800, category: "Марвел", rating: 3, img: photo8},
-    {id: 9, brand: "green", name: "ARC-170", price: 900, category: "Звездные войны", rating: 3, img: photo9},
-    {id: 10, brand: "red", name: "Площадь", price: 1000, category: "Город", rating: 3, img: photo10}
-  ]
-
-
   // фильтр поиска товаров по имени, по категории
   const [inputName, setInputName] = useState('');
   const [categoryName, setCategory] = useState('');
+  const [openNavbar, setOpenNavbar] = useState(false);
 
   const textInput = (text) => {
     setInputName(text)
   }
-  
+    
   const handleCategory = (changedCategory) => {
     changedCategory === categoryName ? setCategory('') : setCategory(changedCategory)
   }
   
-  // const filteredProduc = inputName ? products.filter(el => el.name.includes(inputName)) : products; фильтрация отдельно по имени
-  const filteredProduct = products.filter(el => el.category.includes(categoryName) && el.name && el.name.toLowerCase().includes(inputName.toLowerCase()));
-
-
-  const [openNavbar, setOpenNavbar] = useState(false);
-  
   const handleOpen = () => {
     openNavbar === false ? setOpenNavbar(true) : setOpenNavbar(false)
   }
+  
 
+  // запрос на сервер
+  const [products, setProducts] = useState([]);
+  const [favoriteProducts, setFavoriteProducts] = useState([]);
+  const [basketProducts, setBasketProducts] = useState([]);
 
-  // Добавление в избранное
-  const [favoriteId, setFavoriteIds] = useState([]);
+  // ?q= --- позволяет искать совпадения
+  // (что-то)_like --- ищет нечёткие совпадения
+  useEffect(() => {
+    fetch(`http://localhost:5000/products?q=${inputName}&category_like=${categoryName}`)
+    .then((response) => response.json())
+    .then((result) => setProducts(result))
+    .catch((error) => console.log(error))
+  }, [inputName, categoryName])
 
-  const addToFavorite = (id) => {
-    if (favoriteId.includes(id)) {
-      setFavoriteIds(favoriteId.filter(i => i !== id)) // убирает из избранного уже имеющееся
-      return
-    } else {
-      setFavoriteIds([...favoriteId, id]) // деструкторизация. Добавляем к тому что было, что выбрали
-    }
+  // Запрос на сервер добавленных товаров в избранное и в корзину
+  const loadFavorites = () => {
+    fetch(`http://localhost:5000/favorites`)
+    .then((response) => response.json())
+    .then((result) => setFavoriteProducts(result))
+    .catch((error) => console.log(error))
   }
 
-  const favoriteProducts = products.filter(product => favoriteId.includes(product.id));
+  const loadBasket = () => {
+    fetch(`http://localhost:5000/basket`)
+    .then((response) => response.json())
+    .then((result) => setBasketProducts(result))
+    .catch((error) => console.log(error))
+  }
+
+  useEffect(() => {
+    loadFavorites()
+  }, [])
+
+  useEffect(() => {
+    loadBasket()
+  }, [])
+
+
+  // Добавление в избранное и в корзину товаров
+  // const [favoriteId, setFavoriteIds] = useState([])
+  const addToFavorite = (product) => {
+    favoriteProducts.some(el => el.id === product.id) ? (
+    fetch(`http://localhost:5000/favorites/${product.id}`, {
+      method: "DELETE"
+      },
+    ).then((result) => loadFavorites()) //перед обновлением страницы вернуть массив из имеющихся обновленных в избранном
+  ) : (
+    fetch(`http://localhost:5000/favorites`, {
+      method: "POST",
+      body: JSON.stringify(product), // данные могу быть строкой или обьектом
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((result) => loadFavorites())
+  )
+  }
+  // console.log(favoriteId)
+
+  const addToBasket = (product) => {
+    basketProducts.some(el => el.id === product.id) ? (
+    fetch(`http://localhost:5000/basket/${product.id}`, {
+      method: "DELETE"
+      },
+    ).then((result) => loadBasket())
+  ) : (
+    fetch(`http://localhost:5000/basket`, {
+      method: "POST",
+      body: JSON.stringify(product),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((result) => loadBasket())
+  )
+  }
 
   return (
     <div>
       <Routes>
         <Route path="/" element={
           <Main 
-          textInput={textInput} 
-          handleOpen={handleOpen}
-          openNavbar={openNavbar}
-          handleCategory={handleCategory}
-          setCategory={setCategory}
-          filteredProduct={filteredProduct}
-          addToFavorite={addToFavorite}
-          favoriteId={favoriteId}/>
-        }/>
-          
-        <Route path="/favorite" element={
+            textInput={textInput} 
+            handleOpen={handleOpen}
+            handleCategory={handleCategory}
+            openNavbar={openNavbar}
+            // setCategory={setCategory}
+            products={products}
+            addToFavorite={addToFavorite}
+            favoriteId={favoriteProducts.map(i => i.id)}
+            addToBasket={addToBasket}
+            basketId={basketProducts.map(i => i.id)}/>
+          }/>
+        <Route path="/product/favorite" element={
           <FavoritePage 
-          favoriteProducts={favoriteProducts}
-          addToFavorite={addToFavorite}
-          favoriteId={favoriteId}/>
-        }/>
-
-        <Route path="/basket" element={<BasketPage/>}/>
+            //  favoriteId={favoriteId}
+            favoriteProducts={favoriteProducts}
+            addToFavorite={addToFavorite}
+            addToBasket={addToBasket}
+            favoriteId={favoriteProducts.map(i => i.id)}
+            basketId={basketProducts.map(i => i.id)}
+            />
+          }/>
+          <Route path="/product/basket" element={
+          <BasketPage
+            basketProducts={basketProducts}
+            addToFavorite={addToFavorite}
+            addToBasket={addToBasket}
+            favoriteId={favoriteProducts.map(i => i.id)}
+            basketId={basketProducts.map(i => i.id)}/>
+          }/>
+          <Route path="/product/:id" element={<CardPage/>} />
       </Routes>
     </div>
   );

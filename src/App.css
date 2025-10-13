@@ -1,3 +1,25 @@
-.App {
-  text-align: center;
+/* button:hover {
+  border-color: #646cff;
+    color: #747bff;
+    rgba(9, 194, 123, 0.685)
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+.glow-card {
+  background: linear-gradient(120deg, #7f5af0, #00c6fb 40%, #f0a6ca 70%, #ffde59 100%);
+  box-shadow: 0 0 32px 4px #7f5af0cc, 0 0 64px 8px #00c6fb44;
+  animation: border-glow 3s linear infinite alternate;
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }

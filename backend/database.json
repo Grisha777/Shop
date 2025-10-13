@@ -1,0 +1,120 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "informations": "Новый",
+      "name": "Пожарные",
+      "price": 400,
+      "category": "Город",
+      "rating": 3.2,
+      "age": "6+",
+      "details": 50,
+      "img": "/city-1.jpg"
+    },
+    {
+      "id": 2,
+      "informations": "Новый",
+      "name": "Мстители",
+      "price": 200,
+      "category": "Марвел",
+      "rating": 4.5,
+      "age": "9+",
+      "details": 100,
+      "img": "/marvel-1.jpg"
+    },
+    {
+      "id": 3,
+      "informations": "Новый",
+      "name": "Cynder",
+      "price": 700,
+      "category": "Звездные войны",
+      "rating": 4.7,
+      "age": "12+",
+      "details": 150,
+      "img": "/space-1.jpg"
+    },
+    {
+      "id": 4,
+      "informations": "Новый",
+      "name": "Лес",
+      "price": 800,
+      "category": "Город",
+      "rating": 3.8,
+      "age": "18+",
+      "details": 200,
+      "img": "/city-2.jpg"
+    },
+    {
+      "id": 5,
+      "informations": "Эксклюзив",
+      "name": "Infinity saga",
+      "price": 100,
+      "category": "Марвел",
+      "rating": 5,
+      "age": "6+",
+      "details": 250,
+      "img": "/marvel-2.jpg"
+    },
+    {
+      "id": 6,
+      "informations": "Эксклюзив",
+      "name": "AT-AT",
+      "price": 1000,
+      "category": "Звездные войны",
+      "rating": 5,
+      "age": "9+",
+      "details": 300,
+      "img": "/space-2.jpg"
+    },
+    {
+      "id": 7,
+      "informations": "",
+      "name": "Тюрьма",
+      "price": 600,
+      "category": "Город",
+      "rating": 4.1,
+      "age": "12+",
+      "details": 350,
+      "img": "/city-3.jpg"
+    },
+    {
+      "id": 8,
+      "informations": "",
+      "name": "Корабль",
+      "price": 300,
+      "category": "Марвел",
+      "rating": 4.9,
+      "age": "18+",
+      "details": 400,
+      "img": "/marvel-3.jpg"
+    },
+    {
+      "id": 9,
+      "informations": "",
+      "name": "ARC-170",
+      "price": 500,
+      "category": "Звездные войны",
+      "rating": 4,
+      "age": "6+",
+      "details": 450,
+      "img": "/space-3.jpg"
+    },
+    {
+      "id": 10,
+      "informations": "Скоро будет",
+      "name": "Площадь",
+      "price": 900,
+      "category": "Город",
+      "rating": 4,
+      "age": "9+",
+      "details": 500,
+      "img": "/city-4.jpg"
+    }
+  ],
+  "favorites": [
+
+  ],
+  "basket": [
+
+  ]
+}

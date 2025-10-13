@@ -1,11 +1,13 @@
 import './favorite.css'
 import favorite from '../../images/favorite.svg';
 
-export const Favorite = ({active}) =>{
+export const Favorite = ({activeFavorites}) =>{
     return (
-         <div>
-            <img src={favorite} alt="Избранное"/>
+        <>
+            <img src={favorite} alt="Избранное" width="24px" height="24px"
+                className={activeFavorites ? 'active-favorite' : ''}
+            />
             {/* количество в избранном */}
-        </div>
+        </>
     )
 }

@@ -1,21 +1,120 @@
-.container {
+.section-card {
     display: flex;
     flex-wrap: wrap;
 }
 
 .card {
-    box-shadow: 2px 2px 2px 2px grey;
     margin: 20px;
-    padding: 10px;
-    width: 250px;
-    height: 350px;
+    padding: 10px 8px;
+    width: 356px;
+    height: 530px;
+    box-shadow: 2px 2px 2px 2px grey;
 }
 
-.card img {
-    width: 200px;
-}
-
-.cart-content {
+.card-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+
+.card-header img {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 100%;
+    background: rgb(128, 128, 128, 0.2);
+}
+
+.card-header img:hover {
+    background: rgb(128, 128, 128, 0.8);
+}
+
+.informations {
+    height: 24px;
+    font-size: 14px;
+    text-align: center;
+    background: #FFD700;
+}
+
+.tovar {
+    width: 340px;
+    height: 300px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.card-content {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.age-details-rating,
+.age,
+.details,
+.rating,
+.name {
+    display: flex;
+    justify-content: space-between;
+}
+
+.age-details-rating  {
+    width: 160px;
+    height: 21px;
+    margin: 10px 0;
+}
+
+.age,
+.details,
+.rating {
+    align-items: center;
+    gap: 5px;
+}
+
+.age img,
+.details img,
+.rating img {
+    width: 18px;
+    height: 18px;
+}
+
+.name,
+.price {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.name a {
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.name a:hover{
+    text-decoration: underline;
+}
+
+.add-basket { 
+    width: 200px;
+    height: 44px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    background: rgb(244, 125, 32);
+}
+
+.add-basket:hover {
+    background: rgb(244, 125, 32, 0.6);
+}
+
+.add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    gap: 5px;
 }

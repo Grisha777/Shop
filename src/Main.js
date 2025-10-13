@@ -1,28 +1,25 @@
 import { Header } from './Components/Header/header'
 import { Navbar } from './Components/Navbar/navbar'
 import { Card } from './Components/Cards/card'
+import { Footer } from './Components/Footer/footer'
 
-export const Main = ({textInput, handleOpen, openNavbar, handleCategory, setCategory, filteredProduct, addToFavorite , favoriteId}) => {
+export const Main = ({textInput, handleOpen, openNavbar, handleCategory, products, addToFavorite, favoriteId, addToBasket, basketId}) => {
     return (
         <div>
             <Header textInput={textInput} handleOpen={handleOpen}/>
-            {openNavbar && <Navbar handleCategory={handleCategory} setCategory={setCategory}/>}
-            <div className='container'>
-                {filteredProduct.map(el => (
-                <Card 
-                addToFavorite={addToFavorite}
-                favoriteId={favoriteId}
-                id={el.id}
-                key={el.id}
-                img={el.img} 
-                brand={el.brand}
-                name={el.name}
-                rating={el.rating}
-                price={el.price}
-                category={el.category}          
-                />
+                {openNavbar && <Navbar handleCategory={handleCategory}/>}
+            <div className='section-card'>
+                {products.map(el => (
+                <Card
+                    product={el}
+                    key={el.id}       
+                    addToFavorite={addToFavorite}
+                    favoriteId={favoriteId}
+                    addToBasket={addToBasket}
+                    basketId={basketId}/>
                 ))}
             </div>
+            <Footer/>
         </div>
     )
 }

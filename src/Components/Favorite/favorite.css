@@ -1,6 +1,7 @@
-.cart-content img {
-    max-width: 60px;
-    margin-right: 20px;
-    /* height: 200px; */
-    background: aquamarine;
+.active-favorite {
+    filter: brightness(0) saturate(100%) invert(33%) sepia(85%) saturate(2476%) hue-rotate(346deg) brightness(103%) contrast(102%);
+}
+
+.active-favorite:hover {
+    filter: none;
 }
