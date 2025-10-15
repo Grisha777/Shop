@@ -1,5 +1,16 @@
-.footer-container {
+footer {
+    display: flex;
     background: #1A1A40;
     color: #fff;
     height: 200px;
+}
+
+.footer-container {
+    width: 1600px;
+    margin: 15px auto;
+    color: #fff;
+}
+
+.footer-container img {
+    width: 90px;
 }

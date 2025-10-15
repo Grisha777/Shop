@@ -1,19 +1,32 @@
 .section-card {
     display: flex;
     flex-wrap: wrap;
+    width: 1600px;
+    margin: 0 auto;
 }
 
 .card {
     margin: 20px;
-    padding: 10px 8px;
-    width: 356px;
-    height: 530px;
+    padding: 10px 10px;
+    width: 340px;
+    height: 550px;
     box-shadow: 2px 2px 2px 2px grey;
 }
 
-.card-header {
+.card-header,
+.tovar,
+.card-content,
+.age-details-rating,
+.age,
+.details,
+.rating,
+.name {
     display: flex;
     justify-content: space-between;
+}
+
+.card-header,
+.tovar {
     align-items: center;
     height: 40px;
 }
@@ -38,32 +51,21 @@
     background: #FFD700;
 }
 
-.tovar {
-    width: 340px;
+.tovars {
+    width: 300px;
     height: 300px;
     cursor: pointer;
-    margin-top: 10px;
+    margin: 10px auto 0;
 }
 
 .card-content {
-    display: flex;
-    justify-content: space-between;
     flex-direction: column;
-}
-
-.age-details-rating,
-.age,
-.details,
-.rating,
-.name {
-    display: flex;
-    justify-content: space-between;
+    
 }
 
 .age-details-rating  {
     width: 160px;
-    height: 21px;
-    margin: 10px 0;
+    margin: 15px 0;
 }
 
 .age,
@@ -80,9 +82,14 @@
     height: 18px;
 }
 
-.name,
-.price {
+.name {
     font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.price {
+    height: 30px;
+    align-items: center;
     margin-bottom: 10px;
 }
 

@@ -1,0 +1,50 @@
+.basket-items {
+    height: 560px;
+}
+
+.header-informations {
+    justify-content: flex-end;
+}
+
+.counter-price {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.counter {
+    display: flex;
+    width: 120px;
+    justify-content: center;
+}
+
+.minus, .plus,
+.counter input {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgb(128, 128, 128, 0.3);
+    outline: none;
+    background: #fff;
+}
+
+.minus img,
+.plus img {
+    width: 22px;
+}
+
+.counter input {
+    text-align: center;
+}
+
+.minus:hover, .plus:hover,
+.counter input:hover {
+    border: 1.5px solid blue;
+}
+
+.minus:hover {
+    border-radius: 5px 0 0 5px;
+}
+
+.plus:hover {
+    border-radius: 0 5px 5px 0;
+}

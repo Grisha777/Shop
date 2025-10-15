@@ -1,3 +1,37 @@
-.content {
+.basket-page-content,
+.content,
+.total-price,
+.result {
     display: flex;
+} 
+
+.basket-page-content {
+    width: 1600px;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.content {
+    flex-wrap: wrap;
+    border: 1px solid #000;
+}
+
+.total-price {
+    flex-direction: column;
+    width: 350px;
+    margin-left: 20px;
+    border: 1px solid #000;
+    font-size: 20px;
+}
+
+.result {
+    justify-content: space-between;
+}
+
+.list {
+    margin-top: 20px;
+}
+
+.list ul {
+    margin-left: 30px;
 }

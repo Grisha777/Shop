@@ -1,10 +1,5 @@
-.header-container {
-    display: flex;
-    margin: 0 auto;
-    background: #FFD700;
-}
-
-.header, 
+header,
+.header-container, 
 .left,
 .right,
 .icons,
@@ -14,7 +9,12 @@
     align-items: center;
 }
 
-.header {
+header {
+    margin: 0 auto;
+    background: #FFD700;
+}
+
+.header-container {
     margin: 0 auto;
     width: 1600px;
     height: 70px;
@@ -64,6 +64,33 @@
 .icons {
     justify-content: space-around;
     width: 200px;
+}
+
+.icon-link {
+    position: relative;
+    margin: 0 10px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.favorite-counter,
+.basket-counter {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+}
+
+.basket-counter {
+    background: #808080;
 }
 
 .sign-in-btn {

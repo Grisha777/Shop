@@ -1,0 +1,130 @@
+.card-page-container {
+    display: flex;
+    flex-direction: column;
+    width: 1600px;
+    margin: 0 auto;
+    background: #fff;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    padding-left: 32px;
+    height: 48px; 
+}
+
+.links a{
+    color: rgb(47, 169, 226);
+    text-decoration: none;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+.links img {
+    width: 14px;
+}
+
+.card-page {
+    display: flex;
+    width: 1600px;
+    height: 812px;
+    margin: 0;
+    background: #fff;
+    box-shadow: none;
+}
+
+.left-section {
+    flex: 0 0 70%;
+}
+
+.tovar {
+    height: 512px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.tovar h1 {
+    height: 512px;
+    background: rgb(128, 128, 128, 0.4);
+}
+
+.tovar img {
+    width: 500px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 0 5px 5px 0;
+}
+
+.attributes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 115px;
+    padding: 16px 0;
+}
+
+.attribute-item {
+    width: 500px;
+    gap: 10px;
+}
+
+.card-age,
+.card-details,
+.card-item {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100px;
+    height: 80px;
+    font-size: 28px;
+}
+
+.right-section {
+    flex: 0 0 30%;
+    margin: 15px 0 0 15px;
+    height: 400px;
+}
+
+.header-item {
+    justify-content: start;
+}
+
+.name-item {
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+
+.name-item img {
+    width: 71px;
+    height: 40px;
+}
+
+.counter-price-item {
+    font-size: 24px;
+    height: 100px;
+    margin-bottom: 40px;
+    flex-direction: column;
+}
+
+.buttons-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-basket-item {
+    width: 400px;
+    height: 50px;
+}
+
+
+.card-header-item img {
+    width: 50px;
+    height: 50px;
+}
+
+.card-header-item img:hover {
+    background: rgb(128, 128, 128, 0.8);
+}

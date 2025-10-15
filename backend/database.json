@@ -7,8 +7,9 @@
       "price": 400,
       "category": "Город",
       "rating": 3.2,
-      "age": "6+",
-      "details": 50,
+      "age": "12+",
+      "details": 150,
+      "quantity": 1,
       "img": "/city-1.jpg"
     },
     {
@@ -20,6 +21,7 @@
       "rating": 4.5,
       "age": "9+",
       "details": 100,
+      "quantity": 1,
       "img": "/marvel-1.jpg"
     },
     {
@@ -29,12 +31,25 @@
       "price": 700,
       "category": "Звездные войны",
       "rating": 4.7,
-      "age": "12+",
-      "details": 150,
+      "age": "6+",
+      "details": 450,
+      "quantity": 1,
       "img": "/space-1.jpg"
     },
     {
       "id": 4,
+      "informations": "",
+      "name": "Batmobile",
+      "price": 900,
+      "category": "Бэтман",
+      "rating": 4,
+      "age": "12+",
+      "details": 500,
+      "quantity": 1,
+      "img": "/batman-1.jpg"
+    },
+    {
+      "id": 5,
       "informations": "Новый",
       "name": "Лес",
       "price": 800,
@@ -42,65 +57,83 @@
       "rating": 3.8,
       "age": "18+",
       "details": 200,
+      "quantity": 1,
       "img": "/city-2.jpg"
     },
     {
-      "id": 5,
+      "id": 6,
       "informations": "Эксклюзив",
       "name": "Infinity saga",
       "price": 100,
       "category": "Марвел",
       "rating": 5,
-      "age": "6+",
+      "age": "9+",
       "details": 250,
+      "quantity": 1,
       "img": "/marvel-2.jpg"
     },
     {
-      "id": 6,
+      "id": 7,
       "informations": "Эксклюзив",
       "name": "AT-AT",
       "price": 1000,
       "category": "Звездные войны",
       "rating": 5,
-      "age": "9+",
-      "details": 300,
+      "age": "18+",
+      "details": 50,
+      "quantity": 1,
       "img": "/space-2.jpg"
     },
     {
-      "id": 7,
+      "id": 8,
+      "informations": "Эксклюзив",
+      "name": "Gotem",
+      "price": 900,
+      "category": "Бэтман",
+      "rating": 4,
+      "age": "9+",
+      "details": 500,
+      "quantity": 1,
+      "img": "/batman-2.jpg"
+    },
+    {
+      "id": 9,
       "informations": "",
       "name": "Тюрьма",
       "price": 600,
       "category": "Город",
       "rating": 4.1,
       "age": "12+",
-      "details": 350,
+      "details": 450,
+      "quantity": 1,
       "img": "/city-3.jpg"
     },
     {
-      "id": 8,
+      "id": 10,
       "informations": "",
       "name": "Корабль",
       "price": 300,
       "category": "Марвел",
       "rating": 4.9,
-      "age": "18+",
-      "details": 400,
+      "age": "6+",
+      "details": 300,
+      "quantity": 1,
       "img": "/marvel-3.jpg"
     },
     {
-      "id": 9,
+      "id": 11,
       "informations": "",
       "name": "ARC-170",
       "price": 500,
       "category": "Звездные войны",
       "rating": 4,
       "age": "6+",
-      "details": 450,
+      "details": 350,
+      "quantity": 1,
       "img": "/space-3.jpg"
     },
     {
-      "id": 10,
+      "id": 12,
       "informations": "Скоро будет",
       "name": "Площадь",
       "price": 900,
@@ -108,13 +141,35 @@
       "rating": 4,
       "age": "9+",
       "details": 500,
+      "quantity": 1,
       "img": "/city-4.jpg"
+    },
+    {
+      "id": 13,
+      "informations": "Скоро будет",
+      "name": "Площадь",
+      "price": 400,
+      "category": "Batmobile",
+      "rating": 4,
+      "age": "9+",
+      "details": 500,
+      "quantity": 1,
+      "img": "/batman-3.jpg"
+    },
+    {
+      "id": 14,
+      "informations": "Скоро будет",
+      "name": "Batmobile",
+      "price": 700,
+      "category": "Бэтман",
+      "rating": 4,
+      "age": "9+",
+      "details": 500,
+      "quantity": 1,
+      "img": "/batman-4.jpg"
     }
   ],
-  "favorites": [
-
-  ],
-  "basket": [
-
-  ]
+  "favorites": [],
+  "basket": [],
+  "users": []
 }

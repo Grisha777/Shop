@@ -1,18 +1,20 @@
 import { Link } from 'react-router-dom';
 import { Favorite } from '../Favorite/favorite';
-import { Basket } from '../Basket/basket'
+import { Basket } from '../basket'
 import Logo from '../../images/LEGO.png';
 import accountLogo from '../../images/profile.svg';
 import burgerMenu from '../../images/burger-menu.svg'
 import search from '../../images/search.svg'
 import './header.css';
 
-export const Header = ({textInput, handleOpen}) => {
+export const Header = ({textInput, handleOpen, favoriteCount, basketCount, openModal}) => {
     return (
-        <div className='header-container'>
-            <div className='header'>
+        <header>
+            <div className='header-container'>
                 <div className='left'>
-                    <img src={Logo} className='logo' alt='Логотип'/>
+                    <Link to='/'>
+                        <img src={Logo} className='logo' alt='Логотип'/>
+                    </Link>
                     <img src={burgerMenu} onClick={handleOpen} class='burgerMenu' alt='Меню'/>
                 </div>
                 <div className='right'>
@@ -21,19 +23,25 @@ export const Header = ({textInput, handleOpen}) => {
                         <input onChange={(e => textInput(e.target.value))} placeholder='Search...'/>
                     </div>
                     <div className='icons'>
-                        <Link to="/product/favorite">
-                            <Favorite/>
-                        </Link>
-                        <Link to="/product/basket">
-                            <Basket/>
-                        </Link>
-                        <button className='sign-in-btn'>
+                        <div className='icon-link'>
+                            <Link to='/product/favorite'>
+                                <Favorite/>
+                                {favoriteCount > 0 && <span className='favorite-counter'>{favoriteCount}</span>}
+                            </Link>
+                        </div>
+                        <div className='icon-link'>
+                            <Link to='/product/basket'>
+                                <Basket/>
+                                {basketCount > 0 && <span className='basket-counter'>{basketCount}</span>}
+                            </Link>
+                        </div>
+                        <button className='sign-in-btn' onClick={openModal}>
                             <img src={accountLogo} alt='Логотип аккаунта'/>
                             <p>Sign In</p>
                         </button>
                     </div>
                 </div>
             </div>
-        </div>
+        </header>
     );
 };
