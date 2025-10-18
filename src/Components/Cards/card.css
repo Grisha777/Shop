@@ -1,12 +1,12 @@
 .section-card {
     display: flex;
     flex-wrap: wrap;
-    width: 1600px;
-    margin: 0 auto;
+    max-width: 1600px;
+    margin-bottom: 50px;
 }
 
 .card {
-    margin: 20px;
+    margin: 20px 0 0 45px;
     padding: 10px 10px;
     width: 340px;
     height: 550px;

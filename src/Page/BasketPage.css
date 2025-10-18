@@ -6,14 +6,13 @@
 } 
 
 .basket-page-content {
-    width: 1600px;
+    max-width: 1600px;
     justify-content: space-between;
-    margin: 0 auto;
+    margin: 0 auto 50px;
 }
 
 .content {
     flex-wrap: wrap;
-    border: 1px solid #000;
 }
 
 .total-price {

@@ -63,7 +63,7 @@ header {
 
 .icons {
     justify-content: space-around;
-    width: 200px;
+    width: 220px;
 }
 
 .icon-link {
@@ -109,4 +109,156 @@ header {
 
 .sign-in-btn p {
     font-size: 14px;
+}
+
+
+/* МЕДИАЗАПРОСЫ */
+@media (max-width: 1400px) {
+    .header-container {
+        width: 95%;
+        max-width: 1400px;
+    }
+
+    .right {
+        width: 500px;
+    }
+
+    .search {
+        width: 300px;
+    }
+
+    .search input {
+        width: 250px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .header-container {
+        width: 95%;
+        padding: 0 10px;
+    }
+
+    .left {
+        width: auto;
+    }
+
+    .right {
+        width: auto;
+        gap: 15px;
+    }
+
+    .search {
+        width: 220px;
+        height: 36px;
+    }
+
+    .search input {
+        width: 170px;
+        height: 30px;
+        font-size: 13px;
+    }
+
+    .icons {
+        width: auto;
+        gap: 12px;
+    }
+
+    .sign-in-btn {
+        width: 70px;
+        height: 40px;
+        padding: 0 5px;
+    }
+    
+    .sign-in-btn p {
+        font-size: 12px;
+    }
+    
+    .logo,
+    .burgerMenu {
+        width: 40px;
+    }
+}
+    
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        padding: 10px;
+        gap: 10px;
+    }
+    
+    .search {
+        width: 100%;
+        max-width: 350px;
+        height: 40px;
+    }
+
+    .search input {
+        height: 36px;
+        font-size: 14px;
+    }
+
+    .icons {
+        width: auto;
+        gap: 5px;
+    }
+
+    .sign-in-btn {
+        width: 60px;
+        height: 36px;
+        padding: 0;
+    }
+
+    .sign-in-btn img {
+        width: 20px;
+    }
+
+    .sign-in-btn p {
+        font-size: 11px;
+        display: none;
+    }
+
+    .logo {
+        width: 35px;
+    }
+
+    .burgerMenu {
+        width: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-container {
+        padding: 8px;
+    }
+
+    .search {
+        height: 36px;
+    }
+
+    .search input {
+        height: 32px;
+        font-size: 13px;
+    }
+
+    .icons {
+        gap: 10px;
+    }
+
+    .sign-in-btn {
+        width: 40px;
+        height: 32px;
+    }
+
+    .sign-in-btn img {
+        width: 18px;
+    }
+
+    .favorite-counter,
+    .basket-counter {
+        width: 16px;
+        height: 16px;
+        font-size: 10px;
+        top: -6px;
+        right: -6px;
+    }
 }
