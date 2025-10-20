@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { useAuth } from '../AuthContext';
 import cross from '../../images/cross.svg'
+import off from '../../images/visibility_off.svg'
+import on from '../../images/visibility.svg'
 import './login.css'
 
 export const LoginForm = ({onClose, goToRegister}) => {
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
+    const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
     const { login_user } = useAuth();
     
@@ -64,11 +67,17 @@ export const LoginForm = ({onClose, goToRegister}) => {
                     onChange={(e) => setLogin(e.target.value.trim())}
                     required/>
                 <input
-                    type='password'
-                    placeholder='Пароль'
+                    type={showPassword ? 'text' : 'password'}
+                    placeholder="Пароль"
                     value={password}
                     onChange={(e) => setPassword(e.target.value.trim())}
                     required/>
+                    <button
+                        type="button"
+                        className="toggle-password-login"
+                        onClick={() => setShowPassword(!showPassword)}>
+                        {showPassword ? <img src={on} alt='Открыт'/> : <img src={off} alt='Закрыт'/>}
+                    </button>
             </div>
             <div className='buttons'>
                 {error && <div className="error">{error}</div>}

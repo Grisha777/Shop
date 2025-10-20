@@ -10,7 +10,7 @@ import plus from '../images/plus.svg'
 import '../Components/BasketItem/basketItem.css'
 import './CardPage.css'
 
-export const CardPage = ({favoriteId, addToFavorite, basketId, addToBasket}) => {
+export const CardPage = ({openModal, favoriteProducts, addToFavorite, basketProducts, addToBasket}) => {
     const { id } = useParams();
     const productId = Number(id);
     const [product, setProduct] = useState('');
@@ -28,12 +28,14 @@ export const CardPage = ({favoriteId, addToFavorite, basketId, addToBasket}) => 
         fetchProduct()
     }, [productId])
 
-    const isFavorite = Array.isArray(favoriteId) && favoriteId.includes(productId);
-    const isInBasket = Array.isArray(basketId) && basketId.includes(productId);
+    const isFavorite = Array.isArray(favoriteProducts) ? favoriteProducts.some(item => item.productId === product.id) : false;
+    const isInBasket = Array.isArray(basketProducts) ? basketProducts.some(item => item.productId === product.id) : false;    
 
     return (
         <>
-            <Header/>
+            <Header favoriteCount={favoriteProducts.length} 
+            basketCount={basketProducts.length}
+            openModal={openModal}/>
             <div className='card-page-container'>
                 <div className='links'>
                     <Back/>
@@ -74,7 +76,7 @@ export const CardPage = ({favoriteId, addToFavorite, basketId, addToBasket}) => 
                         <div className='card-content'>
                             <div className='name name-item'>
                                 {product.name}
-                                <img src='' alt='иконка категории'/>
+                                <img src={product.category_logo} alt='иконка категории'/>
                             </div>
                             <div className='counter-price counter-price-item'>
                                 <div className='price'>{product.price * product.quantity} рублей</div>

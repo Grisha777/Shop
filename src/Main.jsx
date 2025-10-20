@@ -5,7 +5,7 @@ import { Card } from './Components/Cards/card'
 import { Footer } from './Components/Footer/footer'
 
 export const Main = ({textInput, handleOpen, favoriteProducts, basketProducts, openModal, 
-    openNavbar, handleCategory, products, addToFavorite, favoriteId, addToBasket, basketId, setPage}) => {
+    openNavbar, handleCategory, products, addToFavorite, addToBasket, setPage}) => {
     return (
         <>
             <Header 
@@ -22,9 +22,9 @@ export const Main = ({textInput, handleOpen, favoriteProducts, basketProducts, o
                         product={el}
                         key={el.id}       
                         addToFavorite={addToFavorite}
-                        favoriteId={favoriteId}
+                        favoriteProducts={favoriteProducts}
                         addToBasket={addToBasket}
-                        basketId={basketId}
+                        basketProducts={basketProducts}
                         openModal={openModal}/>
                     ))}
                 </div>

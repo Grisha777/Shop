@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ProtectedRoute } from './Components/route';
+import { useAuth } from './Components/AuthContext';
 import { Route, Routes } from "react-router-dom";
 import { Main } from './Main';
 import { FavoritePage } from './Page/FavoritePage'
@@ -63,44 +63,65 @@ function App() {
 
 
     // Запрос на сервер добавленных товаров в избранное и в корзину
+    const { user } = useAuth();
     const loadFavorites = async () => {
+        if (!user) {
+            setFavoriteProducts([])
+            return
+        }
+
         try {
-            const response = await fetch(`http://localhost:5000/favorites`)
+            const response = await fetch(`http://localhost:5000/favorites?userId=${user.id}`)
             const result = await response.json()
             setFavoriteProducts(result)
         } catch (error) {
             console.log(error)
+            setFavoriteProducts([])
         }
     }
 
     const loadBasket = async () => { 
+        if (!user) {
+            setBasketProducts([])
+            return
+        }
+
         try {
-            const response = await fetch(`http://localhost:5000/basket`)
+            const response = await fetch(`http://localhost:5000/basket?userId=${user.id}`)
             const result = await response.json()
             setBasketProducts(result)
         } catch (error) {
             console.log(error)
+            setBasketProducts([])
         } 
     }
 
     useEffect(() => {
         loadFavorites()
         loadBasket()
-    }, [])
+    }, [user])
 
     // Добавление в избранное и в корзину товаров
     const addToFavorite = async (product) => {
-        try {
-            const isAlreadyInFavorites = favoriteProducts.some(el => el.id === product.id);
+        if (!user) {
+            openModal();
+            return;
+        }
 
+        try {
+            // const isAlreadyInFavorites = favoriteProducts.some(el => el.id === product.id);
+            const isAlreadyInFavorites = favoriteProducts.find((item) => item.productId === product.id && item.userId === user.id);
             if (isAlreadyInFavorites) {
-                await fetch(`http://localhost:5000/favorites/${product.id}`, {
+                await fetch(`http://localhost:5000/favorites/${isAlreadyInFavorites.id}`, {
                 method: 'DELETE',
             })
             } else {
                 await fetch(`http://localhost:5000/favorites`, {
                     method: 'POST',
-                    body: JSON.stringify(product),
+                    body: JSON.stringify({
+                        userId: user.id,
+                        productId: product.id
+                    }),
                     headers: {
                     'Content-Type': 'application/json',
                 },
@@ -113,17 +134,26 @@ function App() {
     };
 
     const addToBasket = async (product) => {
+        if (!user) {
+            openModal();
+            return;
+        }
+        
         try {
-            const isAlreadyInBasket = basketProducts.some(el => el.id === product.id);
+            const isAlreadyInBasket = basketProducts.find((item) => item.productId === product.id && item.userId === user.id);
 
             if(isAlreadyInBasket) {
-                await fetch(`http://localhost:5000/basket/${product.id}`, {
+                await fetch(`http://localhost:5000/basket/${isAlreadyInBasket.id}`, {
                 method: "DELETE"
             })
             } else {
                 await fetch(`http://localhost:5000/basket`, {
                     method: 'POST',
-                    body: JSON.stringify(product),
+                    body: JSON.stringify({
+                        userId: user.id,
+                        productId: product.id,
+                        quantity: 1
+                    }),
                     headers: {
                     'Content-Type': 'application/json',
                 },
@@ -162,41 +192,37 @@ function App() {
                     openNavbar={openNavbar}
                     products={products}
                     addToFavorite={addToFavorite}
-                    favoriteId={favoriteProducts.map(i => i.id)}
                     addToBasket={addToBasket}
-                    basketId={basketProducts.map(i => i.id)}
                     favoriteProducts={favoriteProducts}
                     basketProducts={basketProducts}
                     openModal={openModal}
                     setPage={setPage}/>
                 }/>
                 <Route path="/product/favorite" element={
-                    <ProtectedRoute openModal={openModal}>
-                        <FavoritePage
-                        favoriteProducts={favoriteProducts}
-                        basketProducts={basketProducts}
-                        addToFavorite={addToFavorite}
-                        addToBasket={addToBasket}
-                        favoriteId={favoriteProducts.map(i => i.id)}
-                        basketId={basketProducts.map(i => i.id)}/>
-                    </ProtectedRoute>
+                    <FavoritePage
+                    favoriteProducts={favoriteProducts}
+                    basketProducts={basketProducts}
+                    addToFavorite={addToFavorite}
+                    addToBasket={addToBasket}
+                    openModal={openModal}
+                    products={products}/>
                 }/>
                 <Route path="/product/basket" element={
-                    <ProtectedRoute openModal={openModal}>
-                        <BasketPage
-                        favoriteProducts={favoriteProducts}
-                        basketProducts={basketProducts}
-                        basketId={basketProducts.map(i => i.id)}
-                        addToBasket={addToBasket}
-                        updateBasket={updateBasket}/>
-                    </ProtectedRoute>
+                    <BasketPage
+                    favoriteProducts={favoriteProducts}
+                    basketProducts={basketProducts}
+                    addToBasket={addToBasket}
+                    openModal={openModal}
+                    products={products}
+                    updateBasket={updateBasket}/>
                 }/>
                 <Route path="/product/:id" element={
                   <CardPage
-                    favoriteId={favoriteProducts.map(i => i.id)}
+                    favoriteProducts={favoriteProducts}
+                    basketProducts={basketProducts}
                     addToFavorite={addToFavorite}
-                    basketId={basketProducts.map(i => i.id)}
-                    addToBasket={addToBasket}/>
+                    addToBasket={addToBasket}
+                    openModal={openModal}/>
                 }/>
             </Routes>
             <Modal isOpen={isModalOpen} onClose={closeModal}/>

@@ -7,11 +7,11 @@ import minus from '../../images/minus.svg'
 import plus from '../../images/plus.svg'
 import './basketItem.css'
 
-export const BasketItem = ({product, basketId, addToBasket, updateBasket}) => {
+export const BasketItem = ({product, basketProducts, addToBasket, updateBasket}) => {
     const {id, informations, name, price, category, rating, age, details, quantity, img} = product;
-    const isInBasket = Array.isArray(basketId) && basketId.includes(id);
+    
+    const isInBasket = Array.isArray(basketProducts) ? basketProducts.some(item => item.productId === product.id) : false;  
 
-    // Обновление при нажатии кол-ва товаров в счётчике
     const handleQuantityPlus = () => {
         updateBasket({...product, quantity: quantity + 1})
     }

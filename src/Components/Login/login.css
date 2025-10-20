@@ -79,7 +79,8 @@
     border-radius: 6px;
 }
 
-.toggle-password {
+.toggle-password-register,
+.toggle-password-login {
   position: absolute;
   right: 60px;
   top: 50%;
@@ -91,6 +92,10 @@
   color: #666;
 }
 
-.toggle-password:hover {
+.toggle-password-register:hover {
   color: #000;
+}
+
+.toggle-password-login {
+    transform: translateY(-30%);
 }

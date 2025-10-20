@@ -106,9 +106,9 @@ export const Register = ({ onClose, goToLogin }) => {
                     required/>
                     <button
                         type="button"
-                        className="toggle-password"
+                        className="toggle-password-register"
                         onClick={() => setShowPassword(!showPassword)}>
-                        {showPassword ? <img src={on}/> : <img src={off}/>}
+                        {showPassword ? <img src={on} alt='Открыт'/> : <img src={off} alt='Закрыт'/>}
                     </button>
                 </div>
                 {error && <div className="error">{error}</div>}

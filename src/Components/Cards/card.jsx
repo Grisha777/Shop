@@ -7,7 +7,7 @@ import brick from '../../images/brick-one-by-one-iso.svg'
 import star from '../../images/rating.svg'
 import './card.css'
 
-export const Card = ({product, openModal, favoriteId, basketId, addToFavorite, addToBasket}) => {
+export const Card = ({product, openModal, favoriteProducts,  basketProducts, addToFavorite, addToBasket}) => {
     const { user } = useAuth();
     const {id, informations, name, price, category, rating, age, details, img} = product;
 
@@ -28,8 +28,8 @@ export const Card = ({product, openModal, favoriteId, basketId, addToFavorite, a
     };
 
     // Проверка на undefined
-    const isFavorite = Array.isArray(favoriteId) && favoriteId.includes(id);
-    const isInBasket = Array.isArray(basketId) && basketId.includes(id);
+    const isFavorite = Array.isArray(favoriteProducts) ? favoriteProducts.some(item => item.productId === product.id) : false;
+    const isInBasket = Array.isArray(basketProducts) ? basketProducts.some(item => item.productId === product.id) : false;  
     
     return(
         <div className='card'>
@@ -38,7 +38,7 @@ export const Card = ({product, openModal, favoriteId, basketId, addToFavorite, a
                 <div className='informations'>{informations}</div>
             </div>
             <Link to={`/product/${id}`}>
-                <img src={img} className='tovars' alt='Фото товара' />
+                <img src={img} className='tovars' alt='Фото товара'/>
             </Link>
             <div className='card-content'>
                 <div className='age-details-rating'>

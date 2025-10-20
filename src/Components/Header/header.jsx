@@ -1,4 +1,5 @@
 // import { useState, useEffect } from 'react';
+import { useAuth } from '../AuthContext';
 import { Link } from 'react-router-dom';
 import { Favorite } from '../Favorite/favorite';
 import { Basket } from '../basket'
@@ -7,7 +8,6 @@ import accountLogo from '../../images/profile.svg';
 import burgerMenu from '../../images/burger-menu.svg'
 import search from '../../images/search.svg'
 import out from '../../images/out.svg'
-import { useAuth } from '../AuthContext';
 import './header.css';
 
 export const Header = ({textInput, handleOpen, favoriteCount, basketCount, openModal}) => {

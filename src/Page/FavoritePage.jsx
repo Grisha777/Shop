@@ -4,20 +4,23 @@ import { Back } from "../Components/back";
 import './FavoritePage.css';
 import { Footer } from "../Components/Footer/footer";
 
-export const FavoritePage = ({favoriteProducts, basketProducts, favoriteId, addToFavorite, basketId, addToBasket}) => {
+export const FavoritePage = ({openModal, favoriteProducts, basketProducts, addToFavorite, addToBasket, products}) => {
+    const favoriteItems = favoriteProducts.map(fav => products.find(p => p.id === fav.productId)).filter(Boolean);
+
     return (
         <>
-            <Header favoriteCount={favoriteProducts.length} basketCount={basketProducts.length}/>
+            <Header favoriteCount={favoriteProducts.length} 
+            basketCount={basketProducts.length} openModal={openModal}/>
             <Back/>
                 <div className="favotite-page-content">
-                    {favoriteProducts.length ? (
-                        favoriteProducts.map(el => (
+                    {favoriteItems.length ? (
+                        favoriteItems.map(el => (
                         <Card 
                             key={el.id}
                             product={el}
-                            favoriteId={favoriteId}
+                            favoriteProducts={favoriteProducts}
+                            basketProducts={basketProducts}
                             addToFavorite={addToFavorite}
-                            basketId={basketId}
                             addToBasket={addToBasket}
                         />))
                     ) : (
