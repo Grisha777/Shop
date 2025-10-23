@@ -34,3 +34,28 @@
 .list ul {
     margin-left: 30px;
 }
+
+
+.buy {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.buy-button {
+    padding: 12px 30px;
+    font-size: 18px;
+    background: #00b33c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.buy-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.buy-button:hover:not(:disabled) {
+    background: #28a745;
+}

@@ -214,6 +214,7 @@ function App() {
                     addToBasket={addToBasket}
                     openModal={openModal}
                     products={products}
+                    loadBasket={loadBasket}
                     updateBasket={updateBasket}/>
                 }/>
                 <Route path="/product/:id" element={
